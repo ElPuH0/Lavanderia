@@ -1,2 +1,0 @@
-# Lavanderia
-Sistema de lavandería

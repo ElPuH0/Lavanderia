@@ -1,0 +1,71 @@
+@* @model Tuple<Producto, IEnumerable<Producto>> *@
+@model LavanderiaWeb.Models.Producto
+
+@{
+    ViewData["Title"] = "Registrar Producto";
+}
+
+<div class="text-center">
+  <h1 class="display-5" id="titulo">@ViewData["Title"]</h1>
+  @* <h1 class="display-4">LavanderiaWeb S.A.C</h1> *@
+</div>
+
+@* <script>
+
+  function checkForm(form)
+  {
+    ...
+    if(!form.terms.checked) {
+      alert("Please indicate that you accept the Terms and Conditions");
+      form.terms.focus();
+      return false;
+    }
+    return true;
+  }
+
+</script> *@
+
+<div id="panel">
+  <img src="/UrlStaticFiles/button-ingresar.png" width="auto" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <form asp-action="Create">
+    <div class="row form-group">
+      <div class="text-right">
+        <button asp-controller="Producto" asp-action="List" id="boton">Búsqueda de Productos</button>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="form-group">
+          <label asp-for="Descripcion" class="control-label" id="campo1"></label><br/>
+          <input asp-for="Descripcion" class="form-control"/><br/>
+          <span asp-validation-for="Descripcion" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+          <label asp-for="Precio" class="control-label" id="campo1"></label><br/>
+          <input asp-for="Precio" class="form-control"/><br/>
+          <span asp-validation-for="Precio" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+          <label asp-for="CategoriaId" class="control-label"></label><br/>
+          <select asp-for="CategoriaId" class="form-control">
+              @foreach(var cat in (List<Categoria>)ViewBag.Categorias){
+                  <option value="@cat.Id">@cat.Descripcion</option>
+              }
+          </select>
+        </div>
+      
+        <div class="text-center">
+          <input type="submit" value="Registrar" id="boton"/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<h1>
+@* @Html.DisplayNameFor(model=>model.Mensaje) *@ @* NOMBRE DE LA VARIABLE DE NUESTRO 'MODELS' (ANTES DE ENVIAR DATOS AL FORMULARIO) *@
+@*no comentar
+@Html.DisplayFor(model=>model.Mensaje) @* SALIDA (DESPUÉS DE ENVIAR DATOS AL FORMULARIO) *@
+</h1>

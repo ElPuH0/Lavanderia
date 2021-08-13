@@ -1,0 +1,52 @@
+@model LavanderiaWeb.Models.Producto
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<div class="text-center">
+    <h1 class="display-5" id="titulo">@ViewData["Title"]</h1>
+</div>
+
+<div id="panel">
+
+  <div class="row form-group">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+      <p id="letra">Edite los datos del Producto</p>
+    </div>
+  </div>
+
+  <form asp-action="Edit">
+    <div class="row form-group">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="Id"/>
+        
+        <div class="form-group">
+          <label asp-for="Descripcion" class="control-label" id="campo1"></label><br/>
+          <input asp-for="Descripcion" class="form-control"/><br/>
+          <span asp-validation-for="Descripcion" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+          <label asp-for="Precio" class="control-label" id="campo1"></label><br/>
+          <input asp-for="Precio" class="form-control"/><br/>
+          <span asp-validation-for="Precio" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+          <label asp-for="CategoriaId" class="control-label"></label><br/>
+          <select asp-for="CategoriaId" class="form-control">
+              @foreach(var cat in (List<Categoria>)ViewBag.Categorias){
+                  <option value="@cat.Id">@cat.Descripcion</option>
+              }
+          </select>
+        </div>
+        
+        <div class="text-center">
+          <input type="submit" value="Actualizar" id="boton"/>
+        </div>
+    </div>
+  </form>
+</div>
